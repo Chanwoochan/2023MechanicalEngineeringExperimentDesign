@@ -15,10 +15,13 @@ sensors_event_t mpuGetAcc();
 
 // SensorSerial.ino
 void printSerial(sensors_event_t a);
-void writeSerialUser(sensors_event_t a);
 
-// HC_05.ino
-void BTbegin();
-void BTtoSerial();
+// ButtonAction.ino
+class ButtonAction {
+    bool button_state;
+  public:
+    ButtonAction();
+    void buttonAction (int pin, sensors_event_t a);
+};
 
 #endif
