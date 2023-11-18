@@ -2,19 +2,20 @@ clear all; clc;
 delete(instrfindall);
 
 
-s2 = serial('COM4', 'BaudRate', 57600); 
+s2 = serial('COM6', 'BaudRate', 57600); 
 fopen(s2); 
 
-time = 0;
-datalen = 500;
+%time = 0;
+datalen = 1000;
 t = zeros(1,datalen);
 data = zeros(1,datalen);
 
 while (1)
-    time = time + 1;
+    %time = time + 1;
     pat = ",";
     scan = fscanf(s2);
-    if extractBetween(scan,"[","]")=="Slave1" & size(strfind(scan,"F"))==1
+    fprintf(scan);
+    if extractBetween(scan,"[","]")=="Slave1" & size(strfind(scan,"F"))==1 & size(strfind(scan,":"))==1
            if contains(scan,":") & contains(scan,",") 
                 str_t = extractBetween(scan,":",pat);
                 str_a = extractBetween(scan,pat,"F");
@@ -28,10 +29,10 @@ while (1)
                 data(1:end-1) = data(2:end);
                 data(end) = pars_a;
                 
-                idx = time-datalen+1:1:time;
-                plot(t, data, 'linewidth', 2, 'Marker','*');
+                %idx = time-datalen+1:1:time;
+                %plot(t, data, 'linewidth', 2, 'Marker','*');
                 axis([min(t) max(t) -10 10]);
-                drawnow; 
+                %drawnow; 
            end
     end
     if extractBetween(scan,"[","]")=="Master"
@@ -42,8 +43,7 @@ while (1)
     end
 end
 
-t = t - t(1);
 RESULT = [t;data];
-
+plot(t, data, 'linewidth', 2, 'Marker','*')
 fclose(s2) 
 delete(instrfindall)
