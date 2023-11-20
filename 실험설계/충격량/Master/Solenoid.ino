@@ -9,8 +9,8 @@ ExpState::ExpState(){           // 생성자
 
 void ExpState::expInnturupt (){    // 솔레노이드 상태 변경
   if(sol_time > millis()) {
-    digitalWrite(SOLENOID_PIN,LOW);
-  } else digitalWrite(SOLENOID_PIN,HIGH);
+    digitalWrite(SOLENOID_PIN,HIGH);
+  } else digitalWrite(SOLENOID_PIN,LOW);
 }   
 
 void ExpState::startExp(int Time){   // 솔레노이드 작동 Time = ms

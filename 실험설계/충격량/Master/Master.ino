@@ -22,7 +22,7 @@ void setup(void) {
   
   pinMode(EXP_SRART_PIN,INPUT_PULLUP); pinMode(EXP_STOP_PIN,INPUT_PULLUP);                   // 버튼 핀 설정
   pinMode(SOLENOID_PIN,OUTPUT); pinMode(BUZZER_PIN,OUTPUT);                               // 릴레이, 부저 제어 핀
-  digitalWrite(SOLENOID_PIN,HIGH); digitalWrite(BUZZER_PIN,LOW);
+  digitalWrite(SOLENOID_PIN,LOW); digitalWrite(BUZZER_PIN,LOW);
   Serial.begin(57600);
   Serial1.begin(57600);
   digitalWrite(BUZZER_PIN,HIGH); delay(100); digitalWrite(BUZZER_PIN,LOW); delay(100); 
