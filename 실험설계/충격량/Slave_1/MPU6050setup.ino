@@ -16,4 +16,6 @@ void mpu6050Setup(){                              // 가속도센서 초기 설�
     while(1) delay(10);
   }
   mpu.setAccelerometerRange(MPU6050_RANGE_16_G);  // 가속도 측정범위 최대 16G, 2048 Level
+  mpu.setGyroRange(MPU6050_RANGE_500_DEG);        // 아무거나
+  mpu.setFilterBandwidth(MPU6050_BAND_260_HZ);      // 필터 주파수 260Hz
 }
