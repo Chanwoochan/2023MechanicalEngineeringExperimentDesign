@@ -3,14 +3,15 @@
 
 #include "master.h"
 
+
 ExpState::ExpState(){           // 생성자
   sol_time = 0;                 // 솔레노이드 상태
 }
 
 void ExpState::expInnturupt (){    // 솔레노이드 상태 변경
   if(sol_time > millis()) {
-    digitalWrite(SOLENOID_PIN,HIGH);
-  } else digitalWrite(SOLENOID_PIN,LOW);
+    servo.write(90); 
+  } else servo.write(0); 
 }   
 
 void ExpState::startExp(int Time){   // 솔레노이드 작동 Time = ms

@@ -6,6 +6,7 @@
 
 #include <Wire.h> 
 #include <LiquidCrystal_I2C.h>
+#include <Servo.h>
 
 //ButtonAction.ino
 class ButtonAction {

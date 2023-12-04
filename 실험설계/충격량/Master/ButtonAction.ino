@@ -10,7 +10,7 @@ ButtonAction::ButtonAction(){                             // 생성자
 void ButtonAction::buttonAction (int pin){                // 솔래노이드 버튼 액션
   if(digitalRead(pin)==LOW) {
     if(button_state == 0) {
-      solenoid.startExp(3000);                            // 솔레노이드의 상태 변경
+      solenoid.startExp(1000);                            // 솔레노이드의 상태 변경
       button_state = 1;
       BEEP.beep(10);                                      // BEEP
       delayMicroseconds(50);                              // 채터링 방지

@@ -17,9 +17,10 @@
 ExpState solenoid;                                        // 솔레노이드 클래스 객체 생성
 BeepInnturupt BEEP;                                                   // 부저 인터럽트 클래스 객체 생성
 ButtonAction expStop; ButtonAction sol;                               // 버튼액션 클래스 객체 생성
+Servo servo;
 
 void setup(void) {
-  
+  servo.attach(SOLENOID_PIN);
   pinMode(EXP_SRART_PIN,INPUT_PULLUP); pinMode(EXP_STOP_PIN,INPUT_PULLUP);                   // 버튼 핀 설정
   pinMode(SOLENOID_PIN,OUTPUT); pinMode(BUZZER_PIN,OUTPUT);                               // 릴레이, 부저 제어 핀
   digitalWrite(SOLENOID_PIN,LOW); digitalWrite(BUZZER_PIN,LOW);
