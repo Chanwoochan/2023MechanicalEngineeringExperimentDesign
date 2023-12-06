@@ -18,26 +18,27 @@ data = zeros(1,datalen);
 
 while (1)
     time = time + 1;
-    pat = ",";
     scan = fscanf(s2);
     fprintf(scan)
-    if extractBetween(scan,"[","]")=="Slave1" & size(strfind(scan,"F"))==1 & size(strfind(scan,":"))==1
-           if contains(scan,":") & contains(scan,",")
-                str_t = extractBetween(scan,":",pat);
-                str_a = extractBetween(scan,pat,"F");        % 데이터를파싱 후 전송이 잘못 된 데이터는 무시
+    if extractBetween(scan,"[","]")=="Slave1" & size(strfind(scan,"F"))==1 & size(strfind(scan,":"))==1 & size(strfind(scan,","))==1
+           if extractAfter(scan,"F")==""
+                str_t = extractBetween(scan,":",",");
+                str_a = extractBetween(scan,",","F");        % 데이터를파싱 후 전송이 잘못 된 데이터는 무시
 
                 pars_t = str2double(str_t);
                 pars_a = str2double(str_a);
 
-                t(1:end-1) = t(2:end);
-                t(end) = pars_t;
-
-                data(1:end-1) = data(2:end);
-                data(end) = pars_a;
-                
-                idx = time-datalen+1:1:time;
-
-                axis([min(t) max(t) -10 10]);              % 데이터 300 개 저장
+                if ~isnan(pars_a) & ~isnan(pars_b)
+                    t(1:end-1) = t(2:end);
+                    t(end) = pars_t;
+    
+                    data(1:end-1) = data(2:end);
+                    data(end) = pars_a;
+                    
+                    idx = time-datalen+1:1:time;
+    
+                    axis([min(t) max(t) -10 10]);              % 데이터 300 개 저장
+                end
            end
     end
     if extractBetween(scan,"[","]")=="Master"
